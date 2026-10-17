@@ -1,0 +1,6 @@
+{
+  "name": "FoodGo - Good Food. Delivered Fast.",
+  "description": "Modern, premium food ordering and delivery platform featuring real-time menu browsing, cart management, instant checkout, and live order tracking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
