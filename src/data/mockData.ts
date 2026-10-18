@@ -66,14 +66,6 @@ export const CATEGORIES: Category[] = [
     description: 'Crispy dosas, fluffy idlis & tangy sambar',
   },
   {
-    id: 'cat-fast-food',
-    name: 'Fast Food',
-    slug: 'fast-food',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281691?auto=format&fit=crop&w=600&q=80',
-    restaurantCount: 35,
-    description: 'Crispy wings, loaded fries & wraps',
-  },
-  {
     id: 'cat-beverages',
     name: 'Beverages',
     slug: 'beverages',

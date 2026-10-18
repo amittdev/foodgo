@@ -52,31 +52,31 @@ export const Navbar: React.FC = () => {
     <>
       <header className="sticky top-0 z-40 w-full bg-[#0a0d14]/95 backdrop-blur-md border-b border-slate-800/80 transition-all">
         <div className="max-w-7xl mx-auto px-2.5 sm:px-4 md:px-4 lg:px-6 xl:px-8">
-          <div className="flex items-center justify-between gap-2 sm:gap-3 md:gap-4 lg:gap-6 h-14 sm:h-16 md:h-16 lg:h-20">
-            {/* Logo & Brand (compact on mobile & tablet) */}
-            <div className="flex items-center gap-2 sm:gap-2.5 md:gap-3.5 lg:gap-6 xl:gap-8 shrink-0">
-              <Link to="/" className="flex items-center gap-1.5 sm:gap-2 lg:gap-2.5 group">
+          <div className="flex items-center justify-between flex-nowrap gap-2 sm:gap-3 md:gap-4 lg:gap-5 h-14 sm:h-16 md:h-16 lg:h-20 w-full">
+            {/* Logo & Brand (compact, never wraps) */}
+            <div className="flex items-center flex-nowrap gap-2 sm:gap-2.5 md:gap-3 lg:gap-5 shrink-0">
+              <Link to="/" className="flex items-center flex-nowrap gap-1.5 sm:gap-2 lg:gap-2.5 group shrink-0">
                 <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-8 md:h-8 lg:w-9 lg:h-9 xl:w-10 xl:h-10 rounded-lg sm:rounded-xl bg-gradient-to-tr from-amber-500 to-orange-500 flex items-center justify-center shadow-md shadow-orange-500/25 group-hover:scale-105 transition-transform shrink-0">
                   <Flame className="w-4 h-4 sm:w-4.5 sm:h-4.5 md:w-4.5 md:h-4.5 lg:w-5 lg:h-5 text-white" />
                 </div>
-                <div className="flex flex-col">
-                  <div className="flex items-center">
-                    <span className="text-base sm:text-lg md:text-xl lg:text-2xl font-black tracking-tight text-white font-heading">
+                <div className="flex flex-col shrink-0">
+                  <div className="flex items-center flex-nowrap">
+                    <span className="text-base sm:text-lg md:text-xl lg:text-2xl font-black tracking-tight text-white font-heading whitespace-nowrap">
                       Food<span className="text-orange-500">Go</span>
                     </span>
                   </div>
-                  <span className="text-[7.5px] sm:text-[8px] md:text-[8.5px] lg:text-[10px] uppercase tracking-wider text-slate-400 font-semibold -mt-0.5 sm:-mt-1 hidden xs:block">
+                  <span className="text-[7.5px] sm:text-[8px] md:text-[8.5px] lg:text-[10px] uppercase tracking-wider text-slate-400 font-semibold -mt-0.5 sm:-mt-1 hidden xs:block whitespace-nowrap">
                     Delivered Fast
                   </span>
                 </div>
               </Link>
 
-              {/* Location Picker Pill (visible on xl screens to leave space for tablet nav) */}
-              <div className="relative hidden xl:block">
+              {/* Location Picker Pill (visible only on ultra-wide screens to prevent crowding nav links) */}
+              <div className="relative hidden 2xl:block shrink-0">
                 <button
                   type="button"
                   onClick={() => setLocationDropdownOpen(!locationDropdownOpen)}
-                  className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-700/60 hover:border-orange-500/50 text-slate-200 text-xs font-medium transition-all group"
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-700/60 hover:border-orange-500/50 text-slate-200 text-xs font-medium transition-all group shrink-0 whitespace-nowrap"
                   aria-label="Change delivery location"
                 >
                   <MapPin className="w-3.5 h-3.5 text-orange-400 group-hover:animate-bounce" />
@@ -113,15 +113,13 @@ export const Navbar: React.FC = () => {
               </div>
             </div>
 
-            {/* Desktop & Tablet Navigation Links - compact and responsive */}
-            <nav className="hidden md:flex items-center gap-1.5 md:gap-2 lg:gap-3 shrink min-w-0">
-              {navLinks.map((link, idx) => (
+            {/* Desktop & Tablet Navigation Links - same line, compact, and responsive */}
+            <nav className="hidden md:flex items-center flex-nowrap gap-1 md:gap-1.5 lg:gap-2.5 shrink-0">
+              {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`px-1.5 md:px-2 lg:px-2.5 xl:px-3 py-1 md:py-1 lg:py-1.5 rounded-lg lg:rounded-xl text-[11px] md:text-xs lg:text-sm font-semibold transition-all whitespace-nowrap inline-flex items-center gap-1 lg:gap-1.5 flex-nowrap shrink-0 ${
-                    idx === navLinks.length - 1 ? 'mr-2 md:mr-3 lg:mr-4' : ''
-                  } ${
+                  className={`px-1.5 md:px-2 lg:px-2.5 xl:px-3 py-1 md:py-1 lg:py-1.5 rounded-lg lg:rounded-xl text-[11px] md:text-xs lg:text-[13px] font-semibold transition-all whitespace-nowrap inline-flex items-center gap-1 flex-nowrap shrink-0 ${
                     isActive(link.path)
                       ? 'text-orange-400 bg-orange-500/10'
                       : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
@@ -137,15 +135,15 @@ export const Navbar: React.FC = () => {
               ))}
             </nav>
 
-            {/* Action Buttons: Cart, Profile/Login, Mobile Menu - with automatic clean gap from Contact */}
-            <div className="flex items-center gap-2 md:gap-2.5 lg:gap-3 shrink-0 ml-auto md:ml-3 lg:ml-5">
-              {/* Cart Pill - distinct gap from Contact button, small & responsive */}
+            {/* Action Buttons: Cart, Profile/Login, Mobile Menu - on the same line with clean space after Contact */}
+            <div className="flex items-center flex-nowrap gap-2 md:gap-2.5 lg:gap-3 shrink-0 ml-auto md:ml-3 lg:ml-5">
+              {/* Cart Pill - on same line as Contact with dedicated space */}
               <Link
                 to="/cart"
-                className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-2.5 md:px-2.5 lg:px-3.5 py-1.5 sm:py-2 md:py-1.5 lg:py-2 rounded-lg sm:rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-medium text-xs sm:text-sm md:text-xs lg:text-sm hover:from-amber-600 hover:to-orange-600 shadow-md shadow-orange-500/20 transition-all transform active:scale-95 shrink-0 group"
+                className="flex items-center flex-nowrap gap-1.5 sm:gap-2 px-2.5 sm:px-3 md:px-2.5 lg:px-3.5 py-1.5 sm:py-2 md:py-1.5 lg:py-2 rounded-lg sm:rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-medium text-xs sm:text-sm md:text-xs lg:text-sm hover:from-amber-600 hover:to-orange-600 shadow-md shadow-orange-500/20 transition-all transform active:scale-95 shrink-0 whitespace-nowrap group"
                 aria-label={`Shopping cart with ${totalCount} items`}
               >
-                <div className="relative">
+                <div className="relative shrink-0">
                   <ShoppingBag className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-3.5 md:h-3.5 lg:w-4 lg:h-4 group-hover:rotate-6 transition-transform" />
                   {totalCount > 0 && (
                     <span className="absolute -top-1.5 -right-1.5 sm:-top-2 sm:-right-2 w-4 h-4 sm:w-4.5 sm:h-4.5 bg-slate-950 text-orange-400 font-bold text-[8.5px] sm:text-[10px] rounded-full flex items-center justify-center border border-orange-500 leading-none">
